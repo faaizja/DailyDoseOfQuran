@@ -9,6 +9,7 @@ A beautiful web application that delivers daily Quranic verses with translations
 
 ## Project Structure
 
+`
 DailyDoseOfQuran/
 ├── client/                 # React frontend
 │   ├── public/
@@ -20,3 +21,4 @@ DailyDoseOfQuran/
 │   ├── index.js          # Main server file
 │   └── .env.example      # Environment variables template
 └── package.json          # Root package.json
+```
