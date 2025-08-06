@@ -1,0 +1,30 @@
+{
+  "name": "daily-dose-of-quran",
+  "version": "1.0.0",
+  "description": "A platform for users to receive daily Quranic verses",
+  "main": "server/index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd server && npm run dev",
+    "client": "cd client && npm start",
+    "install-all": "npm install && cd server && npm install && cd ../client && npm install"
+  },
+  "keywords": [
+    "quran",
+    "daily",
+    "verses",
+    "islamic",
+    "app"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "@emailjs/nodejs": "^5.0.2",
+    "@supabase/supabase-js": "^2.53.0",
+    "axios": "^1.11.0",
+    "dotenv": "^17.2.1"
+  }
+}
