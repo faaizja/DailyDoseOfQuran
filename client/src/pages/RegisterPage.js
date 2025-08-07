@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BookOpen, Mail, User, ArrowLeft, CheckCircle } from 'lucide-react';
+import { BookOpen, Mail, User, ArrowLeft, CheckCircle, Sparkles } from 'lucide-react';
 import toast from 'react-hot-toast';
 import axios from 'axios';
+import VerseCard from '../components/VerseCard';
 
 const RegisterPage = () => {
   const navigate = useNavigate();
@@ -13,8 +14,6 @@ const RegisterPage = () => {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-
-
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -80,20 +79,20 @@ const RegisterPage = () => {
 
   if (isSuccess) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 flex items-center justify-center px-4">
+      <div className="min-h-screen gradient-primary flex items-center justify-center container-padding">
         <div className="max-w-md w-full">
-          <div className="card text-center animate-fade-in">
+          <div className="card-glass text-center animate-scale-in">
             <div className="flex justify-center mb-6">
-              <div className="bg-green-100 p-4 rounded-full">
+              <div className="bg-green-100 p-4 rounded-2xl">
                 <CheckCircle className="w-16 h-16 text-green-600" />
               </div>
             </div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Welcome to the Community!</h2>
-            <p className="text-gray-600 mb-6">
+            <h2 className="heading-display text-2xl mb-4">Welcome to the Community!</h2>
+            <p className="text-body mb-6">
               Your registration was successful. You'll start receiving your daily dose of Quranic wisdom soon.
             </p>
-            <div className="bg-primary-50 p-4 rounded-lg mb-6">
-              <p className="text-sm text-primary-700">
+            <div className="bg-sage-50 p-4 rounded-xl mb-6">
+              <p className="text-sm text-sage-700">
                 <strong>Next Steps:</strong> You'll start receiving your daily dose of Quranic wisdom soon. We'll send beautiful verses with translations to help guide your spiritual journey.
               </p>
             </div>
@@ -110,76 +109,81 @@ const RegisterPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+    <div className="min-h-screen gradient-primary">
       {/* Header */}
-      <header className="bg-white/80 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <header className="glass border-b border-sage-200 sticky top-0 z-10">
+        <div className="max-w-7xl mx-auto container-padding py-4">
           <div className="flex items-center justify-between">
             <button
               onClick={() => navigate('/')}
-              className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
+              className="flex items-center gap-2 text-sage-700 hover:text-sage-900 transition-colors duration-200 font-medium"
             >
               <ArrowLeft className="w-5 h-5" />
               <span>Back to Home</span>
             </button>
-            <div className="flex items-center gap-2">
-              <BookOpen className="w-8 h-8 text-primary-600" />
-              <span className="text-xl font-bold text-gray-900">Daily Dose of Quran</span>
+            <div className="flex items-center gap-3">
+              <div className="bg-sage-800 p-2 rounded-xl">
+                <BookOpen className="w-6 h-6 text-cream-50" />
+              </div>
+              <span className="heading-display text-xl text-sage-900">Daily Dose of Quran</span>
             </div>
           </div>
         </div>
       </header>
 
       {/* Registration Form */}
-      <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-2xl mx-auto container-padding py-12">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Join Our Community</h1>
-          <p className="text-xl text-gray-600">
+          <div className="flex justify-center mb-4">
+            <div className="bg-accent-100 p-4 rounded-2xl">
+              <Sparkles className="w-8 h-8 text-accent-600" />
+            </div>
+          </div>
+          <h1 className="heading-display text-4xl mb-4">Join Our Community</h1>
+          <p className="text-responsive text-body">
             Start your spiritual journey with daily Quranic verses and translations
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="card animate-slide-up">
-          <div className="space-y-6">
+        <form onSubmit={handleSubmit} className="card-glass animate-slide-up">
+          <div className="space-y-8">
             {/* Personal Information */}
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                <User className="w-5 h-5 text-primary-600" />
+              <h3 className="text-lg font-semibold text-sage-900 mb-4 flex items-center gap-2">
+                <User className="w-5 h-5 text-sage-600" />
                 Personal Information
               </h3>
               
-              <div className="space-y-4">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                    Full Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    className="input-field"
-                    placeholder="Enter your full name"
-                    required
-                  />
-                </div>
+              <div className="form-group">
+                <label htmlFor="name" className="form-label">
+                  Full Name *
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  className="input-field"
+                  placeholder="Enter your full name"
+                  required
+                />
               </div>
             </div>
 
             {/* Contact Information */}
             <div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                <Mail className="w-5 h-5 text-primary-600" />
+              <h3 className="text-lg font-semibold text-sage-900 mb-4 flex items-center gap-2">
+                <Mail className="w-5 h-5 text-sage-600" />
                 Contact Information
               </h3>
-              <p className="text-sm text-gray-600 mb-4">
+              <p className="text-sm text-muted mb-4">
                 Provide at least one contact method to receive your daily verses
               </p>
               
               <div className="space-y-4">
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                <div className="form-group">
+                  <label htmlFor="email" className="form-label">
                     Email Address
                   </label>
                   <input
@@ -193,8 +197,8 @@ const RegisterPage = () => {
                   />
                 </div>
                 
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                <div className="form-group">
+                  <label htmlFor="phone" className="form-label">
                     Phone Number
                   </label>
                   <input
@@ -210,33 +214,28 @@ const RegisterPage = () => {
               </div>
             </div>
 
-
-
             {/* Sample Preview */}
-            <div className="bg-gradient-to-r from-primary-50 to-indigo-50 p-6 rounded-lg">
-              <h4 className="font-semibold text-gray-900 mb-3">Preview: What you'll receive</h4>
-              <div className="bg-white p-4 rounded-lg shadow-sm">
-                <div className="arabic-text text-2xl text-gray-800 mb-3">
-                  وَمَن يَتَّقِ اللَّهَ يَجْعَل لَّهُ مَخْرَجًا
-                </div>
-                <div className="text-gray-700 mb-2 italic">
-                  "And whoever fears Allah - He will make for him a way out."
-                </div>
-                <div className="text-sm text-gray-500">
-                  Surah At-Talaq (65:2)
-                </div>
-              </div>
+            <div className="gradient-accent p-6 rounded-xl">
+              <h4 className="font-semibold text-sage-900 mb-3">Preview: What you'll receive</h4>
+              <VerseCard
+                arabicText="وَمَن يَتَّقِ اللَّهَ يَجْعَل لَّهُ مَخْرَجًا"
+                translation="And whoever fears Allah - He will make for him a way out."
+                surah="Surah At-Talaq"
+                ayah="65:2"
+                variant="simple"
+                showIcon={false}
+              />
             </div>
 
             {/* Submit Button */}
             <button
               type="submit"
               disabled={isLoading}
-              className={`btn-primary w-full text-lg py-4 ${isLoading ? 'opacity-50 cursor-not-allowed' : 'hover:shadow-lg transform hover:-translate-y-1'} transition-all duration-200`}
+              className={`btn-primary w-full text-lg py-4 ${isLoading ? 'opacity-50 cursor-not-allowed' : 'hover:shadow-large transform hover:-translate-y-1'} transition-all duration-300`}
             >
               {isLoading ? (
                 <div className="flex items-center justify-center gap-2">
-                  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                  <div className="loading-spinner"></div>
                   <span>Creating Your Account...</span>
                 </div>
               ) : (
@@ -245,7 +244,7 @@ const RegisterPage = () => {
             </button>
 
             {/* Terms */}
-            <p className="text-sm text-gray-500 text-center">
+            <p className="text-sm text-muted text-center">
               By registering, you agree to receive daily Quranic verses and acknowledge that you can 
               unsubscribe at any time. We respect your privacy and will never share your information.
             </p>
